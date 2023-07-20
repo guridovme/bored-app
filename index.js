@@ -1,16 +1,28 @@
-fetch ("https://dog.ceo/api/breeds/image/random")
+const titleNode = document.querySelector('.js-title');
+const activityNode = document.querySelector('.js-activity');
+const goBtnNode = document.querySelector('.js-go-button');
+const bodyBackgroundNode = document.querySelector('body');
+
+const changeActivity = () => {
+fetch ("http://www.boredapi.com/api/activity/")
     .then(data => data.json())
     .then(res => {
-        if (res.status !== 'success'){
-            return;
+        if (res.status !== 'success') {
+            activityNode.innerText = res.activity;
+        } else {
+            console.log('Ошибка');
         }
-        const imgSrc = res.message;
-
-        document.querySelector('.js-img').innerHTML = `
-        <img 
-        src = '${imgSrc}'
-        width = '500'
-        >
-        `;
-
+        updateTitle();
+        changeBackground();
     });
+};
+
+const updateTitle = () => {
+    titleNode.innerText = 'Ура, теперь не скучно 🔥';
+};
+const changeBackground = () => {
+    bodyBackgroundNode.classList.add('change-body')
+}
+
+
+goBtnNode.addEventListener('click', changeActivity);
