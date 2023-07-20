@@ -3,8 +3,7 @@ const activityNode = document.querySelector('.js-activity');
 const goBtnNode = document.querySelector('.js-go-button');
 const bodyBackgroundNode = document.querySelector('body');
 
-const changeActivity = () => {
-    fetch ("http://www.boredapi.com/api/activity/")
+const changeActivity = () => {fetch ("http://www.boredapi.com/api/activity/")
     .then(data => data.json())
     .then(res => {
         if (res.status !== 'success') {
@@ -12,12 +11,12 @@ const changeActivity = () => {
         } else {
             console.log('Ошибка');
         }
-        updateTitle();
+        changeTitle();
         changeBackground();
     });
 };
 
-const updateTitle = () => {
+const changeTitle = () => {
     titleNode.innerText = 'Ура, теперь не скучно 🔥';
 };
 const changeBackground = () => {
