@@ -4,7 +4,7 @@ const goBtnNode = document.querySelector('.js-go-button');
 const bodyBackgroundNode = document.querySelector('body');
 
 const changeActivity = () => {
-fetch ("http://www.boredapi.com/api/activity/")
+    fetch ("http://www.boredapi.com/api/activity/")
     .then(data => data.json())
     .then(res => {
         if (res.status !== 'success') {
